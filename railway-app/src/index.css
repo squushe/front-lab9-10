@@ -34,9 +34,11 @@ body {
 
 /* Train List & Card */
 .train-list {
-  display: grid;
+  display: flex;
+  flex-direction: column;
   gap: 15px;
 }
+
 .train-card {
   background: white;
   padding: 20px;
@@ -44,22 +46,48 @@ body {
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 15px;
 }
-@media (min-width: 600px) {
-  .train-card {
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-  }
+
+/* Прибираємо стандартні відступи, щоб текст не "стрибав" */
+.train-header h3,
+.train-details p {
+  margin: 0;
 }
+
+/* Групуємо текст всередині колонок */
+.train-header,
+.train-details {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
 .train-header h3 {
   color: #003366;
+  font-size: 1.2em;
 }
+
 .route {
   font-size: 1.1em;
   font-weight: bold;
+  color: #333;
 }
+
+.train-details {
+  color: #555;
+}
+
+/* Десктопна версія: робимо рівні колонки за допомогою Grid */
+@media (min-width: 768px) {
+  .train-card {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr auto; /* 3 колонки: ліва, центральна (ширша), кнопка */
+    align-items: center;
+    gap: 20px;
+  }
+}
+
 .btn-primary,
 .btn-success,
 .btn-back {
@@ -73,11 +101,11 @@ body {
   transition: 0.3s;
 }
 .btn-primary {
-  background: #0056b3;
+  background: #3b5998;
   color: white;
 }
 .btn-primary:hover {
-  background: #004494;
+  background: #2d4373;
 }
 .btn-success {
   background: #28a745;
@@ -95,7 +123,6 @@ body {
   margin-bottom: 20px;
   display: inline-block;
 }
-
 /* Booking Layout */
 .booking-layout {
   display: grid;
